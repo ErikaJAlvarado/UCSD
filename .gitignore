@@ -15,6 +15,6 @@ Thumbs.db
 # VSCode
 .vscode/*
 
-dpla_config_secret.json
+#dpla_config_secret.json
 *rsa*
 *ssh*
