@@ -18,3 +18,11 @@ Thumbs.db
 #dpla_config_secret.json
 *rsa*
 *ssh*
+
+#tar files
+Apache.log
+Apache.tar.gz
+Thunderbird.log
+Thunderbird.tar.gz
+Windows.log
+Windows.tar.gz
