@@ -1,4 +1,20 @@
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Jupyter files #
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# VSCode
+.vscode/*
+
 dpla_config_secret.json
 *rsa*
 *ssh*
-interactive_exercises/3.2.4/.ipynb_checkpoints/omdb_api_data-checkpoint.json
