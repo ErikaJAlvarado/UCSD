@@ -16,13 +16,18 @@ Thumbs.db
 .vscode/*
 
 #dpla_config_secret.json
+
+#SSH
 *rsa*
 *ssh*
 
 #tar files
+#data
 Apache.log
 Apache.tar.gz
 Thunderbird.log
 Thunderbird.tar.gz
 Windows.tar.gz
 Windows.log
+*csv
+*json*
