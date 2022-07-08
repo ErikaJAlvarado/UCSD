@@ -37,5 +37,5 @@ Windows.log
 Linkedin/*
 
 /capstone/data/*
-/capstone/NLP_with_Disaster_Tweets/data/Candidates/
+capstone/NLP_with_Disaster_Tweets/data_candidates/*
 /viaje/*
