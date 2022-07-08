@@ -29,7 +29,10 @@ Thunderbird.log
 Thunderbird.tar.gz
 Windows.tar.gz
 Windows.log
-*csv
+interactive_exercises/*csv
+interactive_exercises/12.3.3 Logistic Regression/Ex_Files_Python_Data_Science_EssT_Pt2/Exercise Files/Data/*.csv
+interactive_exercises/12.3.13_SVN/*.csv
+#*.csv
 *json*
 *.zip
 
