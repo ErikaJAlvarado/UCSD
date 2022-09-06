@@ -42,3 +42,16 @@ Linkedin/*
 /capstone/data/*
 capstone/NLP_with_Disaster_Tweets/data_candidates/*
 /viaje/*
+
+
+capstone/NLP_with_Disaster_Tweets/data/tweeter_disaster_text_analysis/train_clean.csv
+capstone/NLP_with_Disaster_Tweets/data/tweeter_disaster_text_analysis/test_clean.csv
+capstone/NLP_with_Disaster_Tweets/data/tweeter_disaster_text_analysis/testing_data.pkl
+capstone/NLP_with_Disaster_Tweets/data/tweeter_disaster_text_analysis/training_data.pkl
+capstone/NLP_with_Disaster_Tweets/disaster_tweets_eda2.ipynb
+
+*/dnn_model/*
+*/one_step/*
+*/training_checkpoints/*
+capstone/NLP_with_Disaster_Tweets/data/tweeter_disaster_text_analysis/train_clean.csv
+
