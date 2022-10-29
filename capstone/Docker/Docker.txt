@@ -1,0 +1,62 @@
+sudo docker run --gpus all -it -v /home/diego:/docker_diego tensorflow/tensorflow:1.12.0-gpu-py3 /bin/bash
+sudo docker run --gpus all -it -v /home/diego:/docker_diego tensorflow/tensorflow:2.0.0-gpu-py3 /bin/bash
+apt-get update
+apt-get install python-opencv (PROBLEM: OpenCV installed on python 2)
+
+MODIFY CONTAINER
+exit
+docker container ls -a (get id of container)
+docker commit {id} {image_name}:{tag}
+	sudo docker commit a2dce22d5a4b tf2_gpu:cv2
+sudo docker run --gpus all -it -v /home/diego:/docker_diego {image_name}:{tag} /bin/bash
+	sudo docker run --gpus all -it -v /home/diego:/docker_diego tf2_gpu:cv2 /bin/bash
+
+DOCKER
+
+1. Vocabulary
+
+Images: Recipe for install.
+Container: Instance of an Image
+	Containers are not persistent
+	Containers can talk to each other
+Volumes: Make data persistent... can be used by many containers
+Network: Wraps many containers
+Compose: Tool for defining and running multi-container Docker applications
+Swarm: Scheduling tool for Docker Containers
+
+2. Instructions
+
+docker --version
+docker run hello-world
+	find image locally
+	if not found, find in Docker Hub (public Docker Images)
+	Create a new Container
+docker images
+	List of local Images
+docker ps -a
+	List all running containers
+docker exec -i -t --name <container_name> -v <local_path_for_data> .<container_folder_path> /bin/bash
+	-i: interactive
+	-t: terminal
+	-v: volume
+	Start Container with terminal access
+exit
+	Exit Container
+docker commit ... 
+	Create a new Container with modifications make to it
+	OPPORTUNITY: WOULD BE GREAT TO GET IMAGE TOO
+docker rm <container_name>
+	Remove Container
+
+3. Docker File
+
+FROM <start_container>
+CMD echo "Hello World"
+RUN apt-get upgrade && apt-get update && apt-get install python3 (New image for each line in Docker File... use &&)
+
+docker build -t <my_image_name> <destination_for_image>
+
+4. Next Steps 
+Docker Step by Step for Beginners with Sample Project
+$19.99
+Udemy

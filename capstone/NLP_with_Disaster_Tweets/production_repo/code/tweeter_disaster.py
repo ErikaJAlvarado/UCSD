@@ -35,6 +35,14 @@ def data_load():
     return(train_df)
 
 def pre_processing_data(df):
+    """
+    This function process and clean raw data collected from tweeter to be used during model training
+    Inputs:
+        :df     :   raw data dataframe
+        :type   :   data frame
+
+    Returns     :   A dataframe with data pre-processed to be used for training
+    """
 
     if df is None:
         raise ValueError("Training data does not exist")    
@@ -114,6 +122,16 @@ def pre_processing_data(df):
 
 
 def get_hashtags(text):
+    """
+    This function find all hashtags within a text and remove #
+    Inputs:
+        :text   :   text
+        :type   :   string
+
+    Returns     :   A string with all hashtags without #
+    """
+
+
     string = ""
     hashtag_pattern = r"(#[^ ]+)"
     hashtag = re.findall(hashtag_pattern,text)
@@ -139,6 +157,14 @@ def get_mentions(text):
     return string
 
 def remove_emoji(string):
+    """
+    This function removes all emojis from a string
+    Inputs:
+        :string :   string to remove emojis
+        :type   :   string
+
+    Returns     :   A string with no emojis
+    """
 
     emoji_pattern = re.compile(
         "["
@@ -155,6 +181,15 @@ def remove_emoji(string):
 
 
 def cleaning_text(text):
+    """
+    This function remove url, html, numbers, punctuation, stop words and do stemming
+    Inputs:
+        :text   :   text
+        :type   :   string
+
+    Returns     :   Clean string.
+    """
+
     url_pattern = "http\S*"
     numb_word_pattern = "\d"
     html_pattern = "<.*?>"
@@ -196,16 +231,46 @@ def missing_data(df):
 
 
 def cleaning_hex(text):
+    """
+    This function remove all hex characters from text
+    Inputs:
+        :text   :   text
+        :type   :   string
+
+    Returns     :   String with no hex characters
+    """
+
     clean_hex = re.sub(r'[^ -~].*'.format(string.punctuation)," ", text)
     return clean_hex
 
 def cleaning_amp(text):
+    """
+    This function remove & from text
+    Inputs:
+        :text   :   text
+        :type   :   string
+
+    Returns     :   A string with no &
+    """
+
     clean = re.sub(r'\samp\s'," ", text)
     return clean    
 
 
 def cleaning_data(df):
-    
+
+    """
+    This function cleans data not only one string but the whole dataset.
+    Removes emojis, punctuation, etc and combines keyword + text
+    Inputs:
+        :text   :   dataset
+        :type   :   dataframe
+
+    Returns     :   Pre-processed and clean dataset.
+    """
+
+
+
     if df is None:
         raise ValueError("Training data does not exist")    
 
@@ -289,6 +354,19 @@ def decoding(text):
 
 
 def get_severity(x):
+    """
+    This function classifies in 0,1 and 2 all predictions.
+    If prediction is [0-0.5] it returns 0
+    If prediction is [0.51-0.75] it returns 1
+    If prediction is [0.75-1] it returns 2
+
+    Inputs:
+        :x      :   model predicton
+        :type   :   number
+
+    Returns     :   A number that classifies the disaster in no-disaster (0) , low probability of being a disaster(1), hight probability  (2)
+    """
+
     try:
         if x is None:
             raise ValueError("Please enter an argument to evaluate severity")
@@ -315,6 +393,15 @@ def get_severity(x):
 
 
 def model(df):
+    """
+    This function using the clean and processed data and train the model (LSTM)
+
+    Inputs:
+        :df     :   clean data
+        :type   :   dataframe
+
+    Returns     :   Model, tokenizer and evaluation
+    """
 
     if df is None:
         raise ValueError("Data does not exist to train the model")    
@@ -395,6 +482,17 @@ def model(df):
 
 
 def prediction(model_path, tokenizer_path, data_path, prediction_path):
+    """
+    This function use the model and tokenizer to identify whether a tweet is a emergency disaster or not. 
+
+    Inputs:
+        :model_path         :   model path
+        :tokenizer_path     :   tokenizer path
+        :data_path          :   data path
+        :prediction_path    :   path were final data set will be saved
+
+    Returns     :   A dataframe with all tweets classified as disaster)
+    """
         
     if model_path is None:
         raise ValueError("Model does not exist") 
@@ -439,13 +537,28 @@ def prediction(model_path, tokenizer_path, data_path, prediction_path):
 
 
 def process():
-    raw_data_df = data_load()    
+    """
+    This function gets the raw data, processed, clean it and save it.
+
+    Returns     :   A dataframe with all tweets classified as disaster)
+    """
+
+    raw_data_df = data_load()
     proc_data_df = pre_processing_data(raw_data_df)
     clean_data_df = cleaning_data(proc_data_df)
     saving_clean_data(clean_data_df)
 
 
 def process_args():
+    """
+    This function creates the mode argument that will be required to run this model.
+    mode = process, process funtion runs
+    mode = model, model function runs
+    mode = prediction, runs prediction functon.
+    
+    """
+
+
     parser          = argparse.ArgumentParser(description='Collects, Process and model data for Disaster Tweeter classification')
     parser.add_argument('--mode', type = str, metavar = '<MODE>',
                     help='Enter: process, model or prediction',

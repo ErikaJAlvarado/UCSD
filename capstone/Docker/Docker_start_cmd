@@ -1,0 +1,1 @@
+sudo docker run -it -v /home/erika/docker_vols:/docker_vols ucsd_docker:v3 /bin/bash
